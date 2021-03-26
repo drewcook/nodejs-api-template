@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const { logger } = require('../startup/logging');
 
 const setupDb = () => {
-  const db = config.get('MONGODB_CONNECTION_STRING');
+	const host = config.get('MONGODB_CONNECTION_HOST');
+	const name = config.get('APP_NAME');
+  const db = `${host}/${name}`;
   // Connect to the local mongoDB instance
   mongoose.connect(db, {
     useNewUrlParser: true,

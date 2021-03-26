@@ -1,4 +1,4 @@
 {
-  "name": "BeerBuddy",
-  "MONGODB_CONNECTION_STRING": "mongodb://localhost/beerbuddy"
+  "APP_NAME": "nodejs-api-template",
+  "MONGODB_CONNECTION_HOST": "mongodb://localhost"
 }

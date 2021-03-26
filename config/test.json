@@ -1,4 +1,2 @@
 {
-	"name": "BeerBuddy - Test",
-	"MONGODB_CONNECTION_STRING": "mongodb://localhost/beerbuddy_tests"
 }

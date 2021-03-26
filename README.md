@@ -1,4 +1,4 @@
-# BeerBuddy API
+# DefaultApp API
 This repository is an API built with Node.js and Express.js. There are full RESTful endpoints setup, authentication, authorization, error handling, and logging.
 ## Prerequisites
 To run this service, you must have a local instance of both Node and MongoDB installed on your machine.
@@ -12,9 +12,9 @@ You can use NPM to install the package dependencies for the application.  Run th
 npm install
 ```
 ## Running the Service Locally
-Since generating a JWT relies on a secret to sign and verify against, export a variable that the app will understand to use for this secret key.  The name of the variable should be `BEERBUDDY_APP_SECRET`.  First run the following:
+Since generating a JWT relies on a secret to sign and verify against, export a variable that the app will understand to use for this secret key.  The name of the variable should be `APP_SECRET`.  First run the following:
 ```bash
-export BEERBUDDY_APP_SECRET=12345
+export APP_SECRET=12345
 ```
 Then, to start the application, run the following command:
 ```bash
@@ -32,4 +32,4 @@ Local log files are created which will store any logs for development.  They are
 Additionally, there is plumbing set up to log errors into a MongoDB table of `[appname]_logs`.  Currently it is commented out.
 
 ## Using the Production Service
-The service is deployed to a Heroku environment, and the data is being stored in a MongoDB Atlas Cloud database.  The current production service can be accessed [here](https://beerbuddy-api.herokuapp.com/).
+The service is deployed to a Heroku environment, and the data is being stored in a MongoDB Atlas Cloud database.  The current production service can be accessed [here](https://nodejs-api-template.herokuapp.com/).

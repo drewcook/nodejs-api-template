@@ -1,7 +1,12 @@
 const morgan = require('morgan');
 const winston = require('winston');
-// require('winston-mongodb');
+const config = require('config');
+require('winston-mongodb');
 require('express-async-errors');
+
+const host = config.get('MONGODB_CONNECTION_HOST');
+const name = config.get('APP_NAME');
+const db = `${host}/${name}`;
 
 const defaultTransports = [
   // - Write all logs with level `error` and below to `error.log`
@@ -28,17 +33,17 @@ const defaultTransports = [
     ),
   }),
   // - Addistionally, write all logs into our mongo db instance
-  // new winston.transports.MongoDB({
-  //   level: 'error',
-  //   db: 'mongodb://localhost/beerbuddy',
-  //   options: {
-  //     useNewUrlParser: true,
-  //     useUnifiedTopology: true,
-  //     // useFindAndModify: false, // not supported at the moment
-  //     // useCreateIndex: true, // not supported at the moment
-  //   },
-  //   collection: 'logs',
-  // }),
+  new winston.transports.MongoDB({
+    level: 'error',
+    db,
+    options: {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false, // TODO: not supported at the moment?
+      useCreateIndex: true, // TODO: not supported at the moment?
+    },
+    collection: 'logs',
+  }),
 ];
 
 const logger = winston.createLogger({
@@ -65,11 +70,11 @@ const logger = winston.createLogger({
       ),
     }),
   ],
-  // This is not working... maybe in a later version
-  // rejectionHandlers: [
-  //   // - Write all unhandled rejection logs to `rejections.log`
-  //   new winston.transports.File({ filename: 'rejections.log' }),
-  // ],
+  // TODO: This is not working... maybe in a later version
+  rejectionHandlers: [
+    // - Write all unhandled rejection logs to `rejections.log`
+    new winston.transports.File({ filename: 'rejections.log' }),
+  ],
 });
 
 const setupLogging = (app) => {
