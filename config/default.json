@@ -1,0 +1,4 @@
+{
+  "name": "BeerBuddy",
+  "MONGODB_CONNECTION_STRING": "mongodb://localhost/beerbuddy"
+}
