@@ -39,8 +39,6 @@ const defaultTransports = [
     options: {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useFindAndModify: false, // TODO: not supported at the moment?
-      useCreateIndex: true, // TODO: not supported at the moment?
     },
     collection: 'logs',
   }),
@@ -70,7 +68,6 @@ const logger = winston.createLogger({
       ),
     }),
   ],
-  // TODO: This is not working... maybe in a later version
   rejectionHandlers: [
     // - Write all unhandled rejection logs to `rejections.log`
     new winston.transports.File({ filename: 'rejections.log' }),
